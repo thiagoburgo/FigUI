@@ -507,7 +507,9 @@ export function DRO({
       )}
 
       {/* Feed / Spindle readout */}
-      <div className={`border-t border-border px-3 flex justify-between font-mono text-text-muted shrink-0 ${topBandLayout ? 'py-0.5' : tabletFooterTextSize}`}>
+      <div className={`border-t border-border px-3 flex justify-between font-mono text-text-muted shrink-0 ${
+        topBandLayout ? 'py-0.5' : isTablet ? 'py-2' : 'py-1'
+      } ${tabletFooterTextSize}`}>
         <div className="flex items-center gap-1.5">
           <span>F</span>
           <span className="text-text-primary">{formatFeedRate(status.feed, units)}</span>

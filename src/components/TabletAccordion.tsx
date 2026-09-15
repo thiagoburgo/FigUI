@@ -18,6 +18,7 @@ import {
   type TabletTabId,
 } from '../lib/tabletTabs'
 import { COMPACT_LANDSCAPE_VIEWER_CLASS } from '../lib/compactLandscapeLayout'
+import { useIsPortrait } from '../lib/viewport'
 
 interface TabletAccordionProps {
   tabletTab: TabletTabId
@@ -34,6 +35,7 @@ export function TabletAccordion({
   variant = 'default',
 }: TabletAccordionProps) {
   const [expanded, setExpanded] = useState<'visualizer' | 'program' | 'controls'>('visualizer')
+  const isPortrait = useIsPortrait()
   const spindleMax = useMachineStore(s => s.controllerSettings.spindleMax)
   const hasSpindle = Boolean(spindleMax)
   const reportedHasProbe = useMachineStore(s => s.controllerSettings.hasProbe)
@@ -57,7 +59,21 @@ export function TabletAccordion({
     if (!isProgramRunning && expanded === 'program') setExpanded('visualizer')
     if (!hasProbingInput && tabletTab === 'probing') setTabletTab('viewer')
     if (!hasManualATC && tabletTab === 'tooling') setTabletTab('viewer')
-  }, [isProgramRunning, expanded, hasProbingInput, hasManualATC, tabletTab, setTabletTab])
+
+    const activeTabs = variant === 'stacked' || isPortrait ? fullTabs : landscapeTabs
+    if (!activeTabs.some(t => t.id === tabletTab)) setTabletTab('viewer')
+  }, [
+    isProgramRunning,
+    expanded,
+    hasProbingInput,
+    hasManualATC,
+    tabletTab,
+    setTabletTab,
+    variant,
+    isPortrait,
+    fullTabs,
+    landscapeTabs,
+  ])
 
   if (variant === 'stacked') {
     return (
