@@ -3,9 +3,7 @@ import { X, Download, CheckCircle2, AlertCircle, ArrowUp, RefreshCw, Heart } fro
 import fluidncLogo from '../assets/fluidnc-logo.svg'
 import { useMachineStore } from '../store'
 import { uploadFile } from '../lib/http'
-import { CURRENT_VERSION, GITHUB_REPO, DISMISSED_VERSION_KEY, semverGt } from '../lib/updateCheck'
-
-const FIRMWARE_URL = 'https://figamore.github.io/FigUI/firmware/index.html.gz'
+import { CURRENT_VERSION, GITHUB_REPO, DISMISSED_VERSION_KEY, semverGt, FIRMWARE_URL } from '../lib/updateCheck'
 const MARKED_CDN_URL = 'https://cdn.jsdelivr.net/npm/marked/marked.min.js'
 const IS_DEMO = Boolean(import.meta.env.VITE_DEMO_MODE)
 

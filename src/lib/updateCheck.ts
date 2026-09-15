@@ -1,5 +1,6 @@
-export const CURRENT_VERSION = '1.3.2'
-export const GITHUB_REPO = 'figamore/FigUI'
+export const CURRENT_VERSION = '1.3.3-fork.1'
+export const GITHUB_REPO = 'thiagoburgo/FigUI'
+export const FIRMWARE_URL = 'https://thiagoburgo.github.io/FigUI/firmware/index.html.gz'
 export const DISMISSED_VERSION_KEY = 'dismissed_update_version'
 
 export function semverGt(a: string, b: string): boolean {
